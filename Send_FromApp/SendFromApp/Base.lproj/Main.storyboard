@@ -76,7 +76,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CDr-BZ-J6V">
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="kP4-Yq-ka0"/>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="kP4-Yq-ka0">
+                            <connections>
+                                <action selector="sendData:" destination="xWy-vQ-Ju4" id="0B4-tY-Xk2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="Yfa-9D-ZJA" id="w5S-l0-zeL"/>

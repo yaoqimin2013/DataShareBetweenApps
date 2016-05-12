@@ -24,4 +24,11 @@ class QImageViewController: UIViewController {
         
         super.viewDidLoad()
     }
+    
+    
+    @IBAction func sendData(sender: AnyObject) {
+    
+        let url = NSURL(string: "receiveApp://?SendApp&Thissapath")
+        UIApplication.sharedApplication().openURL(url!)
+    }
 }
