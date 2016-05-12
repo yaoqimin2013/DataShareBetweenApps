@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "67BC9D1DEE3A8BE7CA1D39493D5FB341A698948E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "67BC9D1DEE3A8BE7CA1D39493D5FB341A698948E" : 0,
+    "A9C65F2BF9146A403488A57FA00C1021D29C1E39" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C4626047-0934-47EF-B2D9-2A0F9359A738",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "67BC9D1DEE3A8BE7CA1D39493D5FB341A698948E" : "SampleApp\/",
+    "A9C65F2BF9146A403488A57FA00C1021D29C1E39" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ReceiveFromApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ReceiveFromApp\/ReceiveFromApp\/ReceiveFromApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yaoqimin2013\/DataShareBetweenApps.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67BC9D1DEE3A8BE7CA1D39493D5FB341A698948E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yaoqimin2013\/SampleAppForDataShareBetweenApps.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A9C65F2BF9146A403488A57FA00C1021D29C1E39"
+    }
+  ]
+}
