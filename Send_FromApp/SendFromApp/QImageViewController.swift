@@ -28,7 +28,16 @@ class QImageViewController: UIViewController {
     
     @IBAction func sendData(sender: AnyObject) {
     
-        let url = NSURL(string: "receiveApp://?SendApp&Thissapath")
-        UIApplication.sharedApplication().openURL(url!)
+        let fileManager = NSFileManager.defaultManager()
+        if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension"), let url = imageURL {
+            let saveurl = containerURL.URLByAppendingPathComponent("imageFile")
+            let savePath = saveurl.path!
+            let imageData = NSData(contentsOfURL: url)
+            let success = fileManager.createFileAtPath(savePath, contents: imageData, attributes: nil)
+            if success {
+                let url = NSURL(string: "receiveApp://?SendApp&\(savePath)")
+                UIApplication.sharedApplication().openURL(url!)
+            }
+        }
     }
 }
