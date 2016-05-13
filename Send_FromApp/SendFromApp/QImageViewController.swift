@@ -16,30 +16,32 @@ class QImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
 
     override func viewDidLoad() {
-        if let url = imageURL {
-            let imageData = NSData(contentsOfURL: url)
-            if let data = imageData {
-                imageView.image = UIImage(data: data)
-            }
-        }
+
+        imageView.image = getImage(imageURL)
         
         super.viewDidLoad()
     }
     
+    func getImage(imageURL: NSURL?) -> UIImage? {
+        if let url = imageURL {
+            let imageData = NSData(contentsOfURL: url)
+            if let data = imageData {
+                return UIImage(data: data)
+            }
+        }
+        return nil
+    }
     
     @IBAction func sendData(sender: AnyObject) {
-    
+        let image = getImage(imageURL)
+        
         let fileManager = NSFileManager.defaultManager()
-        if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension"), let url = imageURL {
+        if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension"), let img = image {
+            let savePath = containerURL.URLByAppendingPathComponent("image.JPG")
+            UIImageJPEGRepresentation(img, 1.0)?.writeToURL(savePath, atomically: true)
             
-            let imageData = NSData(contentsOfURL: url)
-            
-            let saveurl = containerURL.URLByAppendingPathComponent("imageFile")
-            let success = imageData?.writeToURL(saveurl, atomically: true)
-            if (success != nil) {
-                let url = NSURL(string: "receiveApp://?SendApp&\(saveurl)")
-                UIApplication.sharedApplication().openURL(url!)
-            }
+            let url = NSURL(string: "receiveApp://?SendApp&\(savePath)")
+            UIApplication.sharedApplication().openURL(url!)
         }
     }
 }

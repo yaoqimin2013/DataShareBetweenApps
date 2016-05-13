@@ -31,7 +31,7 @@ class ReceiveImageViewController: UIViewController {
     func loadImageData() {
         let fileManager = NSFileManager.defaultManager()
         if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension") {
-            let saveurl = containerURL.URLByAppendingPathComponent("imageFile")
+            let saveurl = containerURL.URLByAppendingPathComponent("image.JPG")
                 let imageData = NSData(contentsOfURL: saveurl)
                 if let imgData = imageData {
                     imageView.image = UIImage(data: imgData)
