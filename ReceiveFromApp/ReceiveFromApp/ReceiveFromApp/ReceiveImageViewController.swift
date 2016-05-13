@@ -28,10 +28,12 @@ class ReceiveImageViewController: UIViewController {
             object: nil)
     }
     
-    func loadImageData() {
+    func loadImageData(notification: NSNotification) {
+        let dict = notification.object as! NSDictionary
+        let imageFilePath = dict["filePath"] as? String
         let fileManager = NSFileManager.defaultManager()
-        if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension") {
-            let saveurl = containerURL.URLByAppendingPathComponent("image.JPG")
+        if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension"), let path = imageFilePath {
+            let saveurl = containerURL.URLByAppendingPathComponent(path)
                 let imageData = NSData(contentsOfURL: saveurl)
                 if let imgData = imageData {
                     imageView.image = UIImage(data: imgData)

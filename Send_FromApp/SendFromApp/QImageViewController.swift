@@ -37,10 +37,11 @@ class QImageViewController: UIViewController {
         
         let fileManager = NSFileManager.defaultManager()
         if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension"), let img = image {
-            let savePath = containerURL.URLByAppendingPathComponent("image.JPG")
+            let imageFilePath = "image.JPG"
+            let savePath = containerURL.URLByAppendingPathComponent(imageFilePath)
             UIImageJPEGRepresentation(img, 1.0)?.writeToURL(savePath, atomically: true)
             
-            let url = NSURL(string: "receiveApp://?SendApp&\(savePath)")
+            let url = NSURL(string: "receiveApp://?SendApp&\(imageFilePath)")
             UIApplication.sharedApplication().openURL(url!)
         }
     }
