@@ -39,6 +39,7 @@
 		1442CF501CE4BFD500CE503A /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
 		1442CF521CE4C8F100CE503A /* image.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.JPG; sourceTree = "<group>"; };
 		1489BA1B1CE4CD6E009EFA6C /* QImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QImageViewController.swift; sourceTree = "<group>"; };
+		148DC2C41CE5640200159CD2 /* SendFromApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SendFromApp.entitlements; sourceTree = "<group>"; };
 		14C7AC9E1CE4BC6E00169580 /* SendFromApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendFromApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C7ACA11CE4BC6E00169580 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14C7ACA61CE4BC6E00169580 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		14C7ACA01CE4BC6E00169580 /* SendFromApp */ = {
 			isa = PBXGroup;
 			children = (
+				148DC2C41CE5640200159CD2 /* SendFromApp.entitlements */,
 				14C7ACA11CE4BC6E00169580 /* AppDelegate.swift */,
 				1442CF501CE4BFD500CE503A /* tableViewController.swift */,
 				1489BA1B1CE4CD6E009EFA6C /* QImageViewController.swift */,
@@ -207,6 +209,12 @@
 				TargetAttributes = {
 					14C7AC9D1CE4BC6E00169580 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 738TX6SL62;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					14C7ACB11CE4BC6E00169580 = {
 						CreatedOnToolsVersion = 7.3;
@@ -417,10 +425,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SendFromApp/SendFromApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SendFromApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sendFromApp.SendFromApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendFromApp.SendFromApp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -429,10 +439,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SendFromApp/SendFromApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SendFromApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sendFromApp.SendFromApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendFromApp.SendFromApp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
