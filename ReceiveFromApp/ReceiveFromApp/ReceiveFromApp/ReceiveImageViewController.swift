@@ -16,11 +16,31 @@ class ReceiveImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        subscribeNotificationCenter()
+    
     }
-
-
-
+    
+    func subscribeNotificationCenter() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(loadImageData),
+            name: receivedDataNotification,
+            object: nil)
+    }
+    
+    func loadImageData() {
+        let fileManager = NSFileManager.defaultManager()
+        if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension") {
+            let saveurl = containerURL.URLByAppendingPathComponent("imageFile")
+                let imageData = NSData(contentsOfURL: saveurl)
+                if let imgData = imageData {
+                    imageView.image = UIImage(data: imgData)
+                }
+                try! fileManager.removeItemAtURL(saveurl)
+            } else {
+                print("No file is found")
+            }
+    }
+    
 }
 
