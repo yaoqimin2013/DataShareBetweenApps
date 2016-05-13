@@ -31,12 +31,13 @@ class QImageViewController: UIViewController {
     
         let fileManager = NSFileManager.defaultManager()
         if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension"), let url = imageURL {
-            let saveurl = containerURL.URLByAppendingPathComponent("imageFile")
-            let savePath = saveurl.path!
+            
             let imageData = NSData(contentsOfURL: url)
-            let success = fileManager.createFileAtPath(savePath, contents: imageData, attributes: nil)
-            if success {
-                let url = NSURL(string: "receiveApp://?SendApp&\(savePath)")
+            
+            let saveurl = containerURL.URLByAppendingPathComponent("imageFile")
+            let success = imageData?.writeToURL(saveurl, atomically: true)
+            if (success != nil) {
+                let url = NSURL(string: "receiveApp://?SendApp&\(saveurl)")
                 UIApplication.sharedApplication().openURL(url!)
             }
         }
