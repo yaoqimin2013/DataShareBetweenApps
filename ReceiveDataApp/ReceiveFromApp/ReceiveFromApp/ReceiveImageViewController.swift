@@ -20,6 +20,12 @@ class ReceiveImageViewController: UIViewController {
     
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        desubscribeFromNotificationCenter()
+    }
+    
     func subscribeNotificationCenter() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -28,20 +34,27 @@ class ReceiveImageViewController: UIViewController {
             object: nil)
     }
     
+    func desubscribeFromNotificationCenter() {
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self,
+            name: receivedDataNotification,
+            object: nil)
+    }
+    
     func loadImageData(notification: NSNotification) {
         let dict = notification.object as! NSDictionary
         let imageFilePath = dict["filePath"] as? String
         let fileManager = NSFileManager.defaultManager()
-        if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension"), let path = imageFilePath {
-            let saveurl = containerURL.URLByAppendingPathComponent(path)
-                let imageData = NSData(contentsOfURL: saveurl)
-                if let imgData = imageData {
-                    imageView.image = UIImage(data: imgData)
-                    try! fileManager.removeItemAtURL(saveurl)
-                }
-            } else {
-                print("No file is found")
+        if let path = imageFilePath {
+            let saveurl = NSURL(string:path)
+            let imageData = NSData(contentsOfURL: saveurl!)
+            if let imgData = imageData {
+                imageView.image = UIImage(data: imgData)
+                try! fileManager.removeItemAtURL(saveurl!)
             }
+        } else {
+            print("No file is found")
+        }
     }
     
 }
