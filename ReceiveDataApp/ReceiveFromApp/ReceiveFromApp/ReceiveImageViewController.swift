@@ -37,8 +37,8 @@ class ReceiveImageViewController: UIViewController {
                 let imageData = NSData(contentsOfURL: saveurl)
                 if let imgData = imageData {
                     imageView.image = UIImage(data: imgData)
+                    try! fileManager.removeItemAtURL(saveurl)
                 }
-                try! fileManager.removeItemAtURL(saveurl)
             } else {
                 print("No file is found")
             }

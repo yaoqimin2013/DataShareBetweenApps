@@ -8,9 +8,20 @@
 
 import UIKit
 
-class tableViewController: UITableViewController {
+enum imageExtension : String {
+    case JPG = ".JPG"
+    case PNG = ".png"
+}
 
-    var images = [NSURL]()
+struct ImageInfo {
+    let name: String
+    let imageURL: NSURL
+    let savedFilePath: NSURL? = nil
+}
+
+class tableViewController: UITableViewController {
+    
+    var imagesInfo = [ImageInfo]()
     
     // MARK: Life Cycle
     
@@ -23,8 +34,13 @@ class tableViewController: UITableViewController {
     }
     
     func loadData() {
-        let imageURL = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent("image.JPG")
-        images.append(imageURL)
+        loadImage("image1", ext: .JPG)
+        loadImage("image2", ext: .JPG)
+    }
+    
+    func loadImage(name: String, ext: imageExtension) {
+        let imageURL = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent(name + ext.rawValue)
+        imagesInfo.append(ImageInfo(name: name, imageURL: imageURL))
     }
     
     // MARK: Data Source
@@ -34,7 +50,7 @@ class tableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return imagesInfo.count
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -47,12 +63,12 @@ class tableViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
         
-        let imageData = NSData(contentsOfURL: images[0])
+        let imageData = NSData(contentsOfURL: imagesInfo[indexPath.row].imageURL)
         
         if let data = imageData {
             cell.imageView?.image = UIImage(data: data)
         }
-        cell.textLabel?.text = "Image"
+        cell.textLabel?.text = imagesInfo[indexPath.row].name
         
         return cell
     }
@@ -61,7 +77,7 @@ class tableViewController: UITableViewController {
         
         let imageVC = storyboard?.instantiateViewControllerWithIdentifier("QImageViewController") as! QImageViewController
         
-        imageVC.imageURL = images[0]
+        imageVC.imageURL = imagesInfo[indexPath.row].imageURL
         
         self.navigationController?.pushViewController(imageVC, animated: true)
     }

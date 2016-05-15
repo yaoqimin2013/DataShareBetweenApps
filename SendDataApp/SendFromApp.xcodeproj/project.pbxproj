@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1442CF511CE4BFD500CE503A /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1442CF501CE4BFD500CE503A /* tableViewController.swift */; };
-		1442CF531CE4C8F100CE503A /* image.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1442CF521CE4C8F100CE503A /* image.JPG */; };
+		1442CF531CE4C8F100CE503A /* image1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1442CF521CE4C8F100CE503A /* image1.JPG */; };
 		1489BA1C1CE4CD6E009EFA6C /* QImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1489BA1B1CE4CD6E009EFA6C /* QImageViewController.swift */; };
 		14C7ACA21CE4BC6E00169580 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7ACA11CE4BC6E00169580 /* AppDelegate.swift */; };
 		14C7ACA71CE4BC6E00169580 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14C7ACA51CE4BC6E00169580 /* Main.storyboard */; };
@@ -16,6 +16,7 @@
 		14C7ACAC1CE4BC6E00169580 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14C7ACAA1CE4BC6E00169580 /* LaunchScreen.storyboard */; };
 		14C7ACB71CE4BC6E00169580 /* SendFromAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7ACB61CE4BC6E00169580 /* SendFromAppTests.swift */; };
 		14C7ACC21CE4BC6E00169580 /* SendFromAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7ACC11CE4BC6E00169580 /* SendFromAppUITests.swift */; };
+		14EDA9A51CE8EF0C0084F65F /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14EDA9A41CE8EF0C0084F65F /* image2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		1442CF501CE4BFD500CE503A /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
-		1442CF521CE4C8F100CE503A /* image.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.JPG; sourceTree = "<group>"; };
+		1442CF521CE4C8F100CE503A /* image1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.JPG; sourceTree = "<group>"; };
 		1489BA1B1CE4CD6E009EFA6C /* QImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QImageViewController.swift; sourceTree = "<group>"; };
 		148DC2C41CE5640200159CD2 /* SendFromApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SendFromApp.entitlements; sourceTree = "<group>"; };
 		14C7AC9E1CE4BC6E00169580 /* SendFromApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendFromApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +53,7 @@
 		14C7ACBD1CE4BC6E00169580 /* SendFromAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SendFromAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C7ACC11CE4BC6E00169580 /* SendFromAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFromAppUITests.swift; sourceTree = "<group>"; };
 		14C7ACC31CE4BC6E00169580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14EDA9A41CE8EF0C0084F65F /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,8 @@
 		1442CF541CE4C91A00CE503A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				1442CF521CE4C8F100CE503A /* image.JPG */,
+				1442CF521CE4C8F100CE503A /* image1.JPG */,
+				14EDA9A41CE8EF0C0084F65F /* image2.jpg */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -251,10 +254,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14EDA9A51CE8EF0C0084F65F /* image2.jpg in Resources */,
 				14C7ACAC1CE4BC6E00169580 /* LaunchScreen.storyboard in Resources */,
 				14C7ACA91CE4BC6E00169580 /* Assets.xcassets in Resources */,
 				14C7ACA71CE4BC6E00169580 /* Main.storyboard in Resources */,
-				1442CF531CE4C8F100CE503A /* image.JPG in Resources */,
+				1442CF531CE4C8F100CE503A /* image1.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
