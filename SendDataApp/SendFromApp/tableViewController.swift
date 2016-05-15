@@ -8,16 +8,7 @@
 
 import UIKit
 
-enum imageExtension : String {
-    case JPG = ".JPG"
-    case PNG = ".png"
-}
 
-struct ImageInfo {
-    let name: String
-    let imageURL: NSURL
-    let savedFilePath: NSURL? = nil
-}
 
 class tableViewController: UITableViewController {
     
@@ -34,13 +25,8 @@ class tableViewController: UITableViewController {
     }
     
     func loadData() {
-        loadImage("image1", ext: .JPG)
-        loadImage("image2", ext: .JPG)
-    }
-    
-    func loadImage(name: String, ext: imageExtension) {
-        let imageURL = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent(name + ext.rawValue)
-        imagesInfo.append(ImageInfo(name: name, imageURL: imageURL))
+        FileManager.sharedData.loadImage("image1", ext: .JPG, description: "Test driving on Charlotte")
+        FileManager.sharedData.loadImage("image2", ext: .JPG, description: "Photo with labmates")
     }
     
     // MARK: Data Source
@@ -50,7 +36,7 @@ class tableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imagesInfo.count
+        return FileManager.sharedData.images.count
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -63,12 +49,12 @@ class tableViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
         
-        let imageData = NSData(contentsOfURL: imagesInfo[indexPath.row].imageURL)
+        let imageData = NSData(contentsOfURL: FileManager.sharedData.images[indexPath.row].imageURL)
         
         if let data = imageData {
             cell.imageView?.image = UIImage(data: data)
         }
-        cell.textLabel?.text = imagesInfo[indexPath.row].name
+        cell.textLabel?.text = FileManager.sharedData.images[indexPath.row].name
         
         return cell
     }
@@ -77,7 +63,7 @@ class tableViewController: UITableViewController {
         
         let imageVC = storyboard?.instantiateViewControllerWithIdentifier("QImageViewController") as! QImageViewController
         
-        imageVC.imageURL = imagesInfo[indexPath.row].imageURL
+        imageVC.imageInfo = FileManager.sharedData.images[indexPath.row]
         
         self.navigationController?.pushViewController(imageVC, animated: true)
     }

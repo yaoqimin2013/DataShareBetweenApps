@@ -10,20 +10,20 @@
 import UIKit
 
 class QImageViewController: UIViewController {
-
-    var imageURL: NSURL? = nil
+    
+    var imageInfo: ImageInfo? = nil
     
     @IBOutlet weak var imageView: UIImageView!
 
     override func viewDidLoad() {
 
-        imageView.image = getImage(imageURL)
+        imageView.image = getImage(imageInfo)
         
         super.viewDidLoad()
     }
     
-    func getImage(imageURL: NSURL?) -> UIImage? {
-        if let url = imageURL {
+    func getImage(imageInfo: ImageInfo?) -> UIImage? {
+        if let url = imageInfo?.imageURL {
             let imageData = NSData(contentsOfURL: url)
             if let data = imageData {
                 return UIImage(data: data)
@@ -33,14 +33,15 @@ class QImageViewController: UIViewController {
     }
     
     @IBAction func sendData(sender: AnyObject) {
-        let image = getImage(imageURL)
         
+        // send data
+        let image = getImage(imageInfo)
         let fileManager = NSFileManager.defaultManager()
         if let containerURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.datashare.extension"), let img = image {
-            let folderPath = "Folder1"
-            let dirctoryURL = containerURL.URLByAppendingPathComponent(folderPath, isDirectory: true)
+            let shareFolder = NSUUID().UUIDString
+            let dirctoryURL = containerURL.URLByAppendingPathComponent(shareFolder, isDirectory: true)
             try! fileManager.createDirectoryAtURL(dirctoryURL, withIntermediateDirectories: false, attributes: nil)
-            let imageFilePath = folderPath + "/image.JPG"
+            let imageFilePath = shareFolder + "/image.JPG"
             let savePath = dirctoryURL.URLByAppendingPathComponent("image.JPG")
             UIImageJPEGRepresentation(img, 1.0)?.writeToURL(savePath, atomically: true)
             let url = NSURL(string: "receiveApp://?SendApp&\(imageFilePath)")

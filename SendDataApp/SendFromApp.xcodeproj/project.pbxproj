@@ -17,6 +17,7 @@
 		14C7ACB71CE4BC6E00169580 /* SendFromAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7ACB61CE4BC6E00169580 /* SendFromAppTests.swift */; };
 		14C7ACC21CE4BC6E00169580 /* SendFromAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7ACC11CE4BC6E00169580 /* SendFromAppUITests.swift */; };
 		14EDA9A51CE8EF0C0084F65F /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14EDA9A41CE8EF0C0084F65F /* image2.jpg */; };
+		14EDA9A71CE90B5C0084F65F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EDA9A61CE90B5C0084F65F /* FileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		14C7ACC11CE4BC6E00169580 /* SendFromAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFromAppUITests.swift; sourceTree = "<group>"; };
 		14C7ACC31CE4BC6E00169580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14EDA9A41CE8EF0C0084F65F /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
+		14EDA9A61CE90B5C0084F65F /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,14 +115,11 @@
 		14C7ACA01CE4BC6E00169580 /* SendFromApp */ = {
 			isa = PBXGroup;
 			children = (
-				148DC2C41CE5640200159CD2 /* SendFromApp.entitlements */,
 				14C7ACA11CE4BC6E00169580 /* AppDelegate.swift */,
-				1442CF501CE4BFD500CE503A /* tableViewController.swift */,
-				1489BA1B1CE4CD6E009EFA6C /* QImageViewController.swift */,
 				14C7ACA51CE4BC6E00169580 /* Main.storyboard */,
-				14C7ACA81CE4BC6E00169580 /* Assets.xcassets */,
-				14C7ACAA1CE4BC6E00169580 /* LaunchScreen.storyboard */,
-				14C7ACAD1CE4BC6E00169580 /* Info.plist */,
+				14EDA9A81CE90B660084F65F /* Controller */,
+				14EDA9A91CE90B6C0084F65F /* Model */,
+				14EDA9AA1CE90B930084F65F /* SupportFiles */,
 				1442CF541CE4C91A00CE503A /* Source */,
 			);
 			path = SendFromApp;
@@ -142,6 +141,34 @@
 				14C7ACC31CE4BC6E00169580 /* Info.plist */,
 			);
 			path = SendFromAppUITests;
+			sourceTree = "<group>";
+		};
+		14EDA9A81CE90B660084F65F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1442CF501CE4BFD500CE503A /* tableViewController.swift */,
+				1489BA1B1CE4CD6E009EFA6C /* QImageViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		14EDA9A91CE90B6C0084F65F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14EDA9A61CE90B5C0084F65F /* FileManager.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		14EDA9AA1CE90B930084F65F /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				14C7ACA81CE4BC6E00169580 /* Assets.xcassets */,
+				14C7ACAA1CE4BC6E00169580 /* LaunchScreen.storyboard */,
+				14C7ACAD1CE4BC6E00169580 /* Info.plist */,
+				148DC2C41CE5640200159CD2 /* SendFromApp.entitlements */,
+			);
+			name = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1442CF511CE4BFD500CE503A /* tableViewController.swift in Sources */,
+				14EDA9A71CE90B5C0084F65F /* FileManager.swift in Sources */,
 				1489BA1C1CE4CD6E009EFA6C /* QImageViewController.swift in Sources */,
 				14C7ACA21CE4BC6E00169580 /* AppDelegate.swift in Sources */,
 			);
