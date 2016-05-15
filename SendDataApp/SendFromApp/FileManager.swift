@@ -16,9 +16,10 @@ enum imageExtension : String {
 
 struct ImageInfo {
     let name: String
+    let type: imageExtension
     let imageURL: NSURL
     let description: String?
-    let savedFilePath: NSURL? = nil
+    var savedFilePath: NSURL? = nil
 }
 
 class FileManager {
@@ -26,13 +27,10 @@ class FileManager {
     
     var images: [ImageInfo] = [ImageInfo]()
     
-    func loadImage(name: String, ext: imageExtension, description: String?) {
+    func loadImage(name: String, ext: imageExtension, description: String? = nil, savedFilePath: NSURL? = nil) {
         let imageURL = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent(name + ext.rawValue)
-        if let message = description {
-            images.append(ImageInfo(name: name, imageURL: imageURL, description: message))
-        } else {
-            images.append(ImageInfo(name: name, imageURL: imageURL, description: nil))
-        }
+        let imageInfo = ImageInfo(name: name, type:ext, imageURL: imageURL, description: description, savedFilePath: savedFilePath)
+        images.append(imageInfo)
     }
     
     func doesExist(toSendImage: ImageInfo) -> Bool {
@@ -72,9 +70,17 @@ class FileManager {
         return nil
     }
     
-    
+    func setSavePathWithURL(imageInfo: ImageInfo?, savePathURL : NSURL?) {
+        var idx: Int = -1
+        for (index, info) in images.enumerate() {
+            if info.name == imageInfo?.name {
+                idx = index
+            }
+        }
+        if idx >= 0 {
+            images.removeAtIndex(idx)
+            loadImage((imageInfo?.name)!, ext: (imageInfo?.type)!, description: imageInfo?.description, savedFilePath: savePathURL)
+        }
+    }
 }
-
-
-
 
