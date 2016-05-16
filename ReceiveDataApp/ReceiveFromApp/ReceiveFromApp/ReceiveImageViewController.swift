@@ -43,19 +43,39 @@ class ReceiveImageViewController: UIViewController {
     
     func loadImageData(notification: NSNotification) {
         let dict = notification.object as! NSDictionary
-        let imageFilePath = dict["filePath"] as? String
-        let fileManager = NSFileManager.defaultManager()
-        if let path = imageFilePath {
+        let JSONSavedPath = dict["filePath"] as? String
+//        let fileManager = NSFileManager.defaultManager()
+        if let path = JSONSavedPath {
             let saveurl = NSURL(string:path)
-            let imageData = NSData(contentsOfURL: saveurl!)
-            if let imgData = imageData {
-                imageView.image = UIImage(data: imgData)
-                try! fileManager.removeItemAtURL(saveurl!)
+            let JSONData = NSData(contentsOfURL: saveurl!)
+            if let data = JSONData {
+                do {
+                    let imageInfos = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSArray
+                    print(imageInfos)
+                } catch {
+                    print("Failed to get images")
+                }
             }
         } else {
             print("No file is found")
         }
     }
+    
+//    func loadImageData(notification: NSNotification) {
+//        let dict = notification.object as! NSDictionary
+//        let JSONSavedPath = dict["filePath"] as? String
+//        let fileManager = NSFileManager.defaultManager()
+//        if let path = JSONSavedPath {
+//            let saveurl = NSURL(string:path)
+//            let imageData = NSData(contentsOfURL: saveurl!)
+//            if let imgData = imageData {
+//                imageView.image = UIImage(data: imgData)
+//                try! fileManager.removeItemAtURL(saveurl!)
+//            }
+//        } else {
+//            print("No file is found")
+//        }
+//    }
     
 }
 
