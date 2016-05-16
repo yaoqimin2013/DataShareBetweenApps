@@ -72,13 +72,8 @@ class FileManager {
     }
     
     func setSavePathWithURL(imageInfo: ImageInfo?, saveImageURL : NSURL?, saveInfoURL: NSURL?) {
-        var idx: Int = -1
-        for (index, info) in images.enumerate() {
-            if info.name == imageInfo?.name {
-                idx = index
-            }
-        }
-        if idx >= 0 {
+        let count = images.count
+        for idx in 0..<count {
             images.removeAtIndex(idx)
             loadImage((imageInfo?.name)!, ext: (imageInfo?.type)!, description: imageInfo?.description, savedFilePath: saveImageURL, savedInformationPath: saveInfoURL)
         }
@@ -117,8 +112,8 @@ class FileManager {
             let dirctoryURL = containerURL.URLByAppendingPathComponent(shareFolder, isDirectory: true)
             try! fileManager.createDirectoryAtURL(dirctoryURL, withIntermediateDirectories: false, attributes: nil)
             for imageInfo in images {
-                let savedImageURL = dirctoryURL.URLByAppendingPathComponent(imageInfo.name)
-                let savedInfoURL = dirctoryURL.URLByAppendingPathComponent("Info")
+                let savedImageURL = dirctoryURL.URLByAppendingPathComponent(imageInfo.name + imageInfo.type.rawValue)
+                let savedInfoURL = dirctoryURL.URLByAppendingPathComponent(imageInfo.name + "info")
                 setSavePathWithURL(imageInfo, saveImageURL: savedImageURL, saveInfoURL: savedInfoURL)
                 
                 UIImageJPEGRepresentation(getImage(imageInfo)!, 1.0)?.writeToURL(savedImageURL, atomically: true)

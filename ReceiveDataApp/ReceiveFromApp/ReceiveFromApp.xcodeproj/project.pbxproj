@@ -15,6 +15,7 @@
 		145A42001CE4D623002F2026 /* ReceiveFromAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145A41FF1CE4D623002F2026 /* ReceiveFromAppTests.swift */; };
 		145A420B1CE4D623002F2026 /* ReceiveFromAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145A420A1CE4D623002F2026 /* ReceiveFromAppUITests.swift */; };
 		1487D98D1CE517A700AA81CA /* ReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487D98C1CE517A700AA81CA /* ReceivedData.swift */; };
+		14EDA9AC1CE96A0F0084F65F /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EDA9AB1CE96A0F0084F65F /* ImageViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		145A420C1CE4D623002F2026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1487D98C1CE517A700AA81CA /* ReceivedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedData.swift; sourceTree = "<group>"; };
 		148DC2C51CE564AE00159CD2 /* ReceiveFromApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ReceiveFromApp.entitlements; sourceTree = "<group>"; };
+		14EDA9AB1CE96A0F0084F65F /* ImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +104,9 @@
 			children = (
 				148DC2C51CE564AE00159CD2 /* ReceiveFromApp.entitlements */,
 				145A41EA1CE4D623002F2026 /* AppDelegate.swift */,
-				145A41EC1CE4D623002F2026 /* ReceiveImageViewController.swift */,
 				145A41EE1CE4D623002F2026 /* Main.storyboard */,
+				145A41EC1CE4D623002F2026 /* ReceiveImageViewController.swift */,
+				14EDA9AB1CE96A0F0084F65F /* ImageViewCell.swift */,
 				145A41F11CE4D623002F2026 /* Assets.xcassets */,
 				145A41F31CE4D623002F2026 /* LaunchScreen.storyboard */,
 				145A41F61CE4D623002F2026 /* Info.plist */,
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14EDA9AC1CE96A0F0084F65F /* ImageViewCell.swift in Sources */,
 				145A41ED1CE4D623002F2026 /* ReceiveImageViewController.swift in Sources */,
 				145A41EB1CE4D623002F2026 /* AppDelegate.swift in Sources */,
 				1487D98D1CE517A700AA81CA /* ReceivedData.swift in Sources */,

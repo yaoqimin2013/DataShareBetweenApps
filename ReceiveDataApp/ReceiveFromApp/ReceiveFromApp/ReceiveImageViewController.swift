@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ReceiveImageViewController: UIViewController {
-
-    @IBOutlet weak var imageView: UIImageView!
+class ReceiveImageViewController: UICollectionViewController {
     
+    var imageInfos : [[String: String]] = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView!.backgroundColor = UIColor.whiteColor()
         
         subscribeNotificationCenter()
     
@@ -26,6 +26,34 @@ class ReceiveImageViewController: UIViewController {
         desubscribeFromNotificationCenter()
     }
     
+    // MARK: CollectionView Data source
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageInfos.count // hardcode
+    }
+    
+    // Mark: CollectionView Delegate
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ImageViewCell
+        if imageInfos.count > 0 {
+            let name = try! String(contentsOfFile: imageInfos[indexPath.row]["infoPath"]!, encoding: NSUTF8StringEncoding)
+            let imageData = NSData(contentsOfFile: imageInfos[indexPath.row]["imagePath"]!)
+            
+            cell.imageName.text = name
+            cell.imageView.image = UIImage(data: imageData!)
+        }
+        return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("Clicked: \(indexPath.row)")
+    }
+    
+    // MARK: Observers
     func subscribeNotificationCenter() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -44,14 +72,13 @@ class ReceiveImageViewController: UIViewController {
     func loadImageData(notification: NSNotification) {
         let dict = notification.object as! NSDictionary
         let JSONSavedPath = dict["filePath"] as? String
-//        let fileManager = NSFileManager.defaultManager()
         if let path = JSONSavedPath {
             let saveurl = NSURL(string:path)
             let JSONData = NSData(contentsOfURL: saveurl!)
             if let data = JSONData {
                 do {
-                    let imageInfos = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSArray
-                    print(imageInfos)
+                    imageInfos = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSArray as! [[String : String]]
+                    collectionView?.reloadData()
                 } catch {
                     print("Failed to get images")
                 }
@@ -60,22 +87,5 @@ class ReceiveImageViewController: UIViewController {
             print("No file is found")
         }
     }
-    
-//    func loadImageData(notification: NSNotification) {
-//        let dict = notification.object as! NSDictionary
-//        let JSONSavedPath = dict["filePath"] as? String
-//        let fileManager = NSFileManager.defaultManager()
-//        if let path = JSONSavedPath {
-//            let saveurl = NSURL(string:path)
-//            let imageData = NSData(contentsOfURL: saveurl!)
-//            if let imgData = imageData {
-//                imageView.image = UIImage(data: imgData)
-//                try! fileManager.removeItemAtURL(saveurl!)
-//            }
-//        } else {
-//            print("No file is found")
-//        }
-//    }
-    
 }
 
